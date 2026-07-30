@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - GBM Admin</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#f59e0b',
+                        accent: '#06b6d4',
+                        dark: '#0f172a'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar w-72 fixed inset-y-0 left-0 z-50 flex flex-col">
+            <!-- Logo -->
+            <div class="p-6 border-b border-white/10">
+                <a href="../index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold">GBM</span>
+                    </div>
+                    <div>
+                        <h1 class="text-white font-bold">Admin Panel</h1>
+                        <p class="text-xs text-white/60">GBM School</p>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="flex-1 p-4 overflow-y-auto">
+                <div class="space-y-1">
+                    <a href="dashboard.html" class="admin-sidebar-link active">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="news.html" class="admin-sidebar-link">
+                        <i class="fas fa-newspaper"></i>
+                        <span>News & Notices</span>
+                    </a>
+                    <a href="events.html" class="admin-sidebar-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Events</span>
+                    </a>
+                    <a href="gallery.html" class="admin-sidebar-link">
+                        <i class="fas fa-images"></i>
+                        <span>Gallery</span>
+                    </a>
+                    <a href="teachers.html" class="admin-sidebar-link">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teachers</span>
+                    </a>
+                    <a href="students.html" class="admin-sidebar-link">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Students</span>
+                    </a>
+                    <a href="admissions.html" class="admin-sidebar-link">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Admissions</span>
+                    </a>
+                    <a href="settings.html" class="admin-sidebar-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+                
+                <!-- Homepage Section -->
+                <div class="mt-8">
+                    <h3 class="text-xs font-semibold text-white/40 uppercase tracking-wider mb-3 px-4">Homepage</h3>
+                    <div class="space-y-1">
+                        <a href="#" class="admin-sidebar-link">
+                            <i class="fas fa-home"></i>
+                            <span>Hero Section</span>
+                        </a>
+                        <a href="#" class="admin-sidebar-link">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About Content</span>
+                        </a>
+                        <a href="#" class="admin-sidebar-link">
+                            <i class="fas fa-star"></i>
+                            <span>Testimonials</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- User Profile -->
+            <div class="p-4 border-t border-white/10">
+                <div class="flex items-center space-x-3 mb-4">
+                    <img id="admin-photo" src="" alt="Admin" class="w-10 h-10 rounded-full object-cover">
+                    <div class="flex-1 min-w-0">
+                        <p id="admin-name" class="text-sm font-semibold text-white truncate">Admin</p>
+                        <p id="admin-email" class="text-xs text-white/60 truncate">admin@gbm.edu.np</p>
+                    </div>
+                </div>
+                <button onclick="signOut()" class="w-full flex items-center justify-center space-x-2 bg-white/10 hover:bg-white/20 text-white py-2 rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main flex-1 ml-72 flex flex-col overflow-hidden">
+            <!-- Top Bar -->
+            <header class="admin-topbar px-8 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button id="sidebar-toggle" class="lg:hidden text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-gray-800">Dashboard</h2>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="admin-search hidden md:block">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search..." class="admin-form-input">
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    
+                    <!-- Quick Actions -->
+                    <div class="flex items-center space-x-2">
+                        <a href="../index.html" target="_blank" class="p-2 text-gray-600 hover:text-primary" title="View Website">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="flex-1 overflow-y-auto p-8">
+                <!-- Welcome Card -->
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome back, Admin! 👋</h1>
+                    <p class="text-gray-600">Here's what's happening at GBM today.</p>
+                </div>
+                
+                <!-- Statistics Grid -->
+                <div class="quick-stats-grid">
+                    <div class="stat-card-admin">
+                        <div class="stat-value" id="stat-news">0</div>
+                        <div class="stat-label">News Articles</div>
+                        <i class="fas fa-newspaper stat-icon"></i>
+                    </div>
+                    
+                    <div class="stat-card-admin" style="background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);">
+                        <div class="stat-value" id="stat-events">0</div>
+                        <div class="stat-label">Upcoming Events</div>
+                        <i class="fas fa-calendar-alt stat-icon"></i>
+                    </div>
+                    
+                    <div class="stat-card-admin" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                        <div class="stat-value" id="stat-gallery">0</div>
+                        <div class="stat-label">Gallery Images</div>
+                        <i class="fas fa-images stat-icon"></i>
+                    </div>
+                    
+                    <div class="stat-card-admin" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
+                        <div class="stat-value" id="stat-teachers">0</div>
+                        <div class="stat-label">Teachers</div>
+                        <i class="fas fa-chalkboard-teacher stat-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <a href="news.html" class="admin-card p-6 text-center hover:shadow-lg transition-all group">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-plus text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800">Add News</h3>
+                        <p class="text-sm text-gray-500 mt-1">Publish new article</p>
+                    </a>
+                    
+                    <a href="events.html" class="admin-card p-6 text-center hover:shadow-lg transition-all group">
+                        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-calendar-plus text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800">Add Event</h3>
+                        <p class="text-sm text-gray-500 mt-1">Schedule event</p>
+                    </a>
+                    
+                    <a href="gallery.html" class="admin-card p-6 text-center hover:shadow-lg transition-all group">
+                        <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-upload text-2xl text-cyan-500"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800">Upload Photos</h3>
+                        <p class="text-sm text-gray-500 mt-1">Add to gallery</p>
+                    </a>
+                    
+                    <a href="teachers.html" class="admin-card p-6 text-center hover:shadow-lg transition-all group">
+                        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-user-plus text-2xl text-green-500"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800">Add Teacher</h3>
+                        <p class="text-sm text-gray-500 mt-1">New staff member</p>
+                    </a>
+                </div>
+                
+                <!-- Recent Activity & Notices -->
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Recent News -->
+                    <div class="admin-card p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-bold text-gray-800">Recent News</h3>
+                            <a href="news.html" class="text-sm text-primary hover:text-blue-700 font-medium">View All</a>
+                        </div>
+                        <div id="recent-news-container" class="space-y-4">
+                            <div class="text-center py-8 text-gray-500">
+                                <i class="fas fa-spinner animate-spin text-2xl mb-2"></i>
+                                <p>Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="admin-card p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-bold text-gray-800">Recent Activity</h3>
+                            <a href="#" class="text-sm text-primary hover:text-blue-700 font-medium">View Log</a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="activity-log-item">
+                                <div class="activity-log-icon info">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-800">New article published</p>
+                                    <p class="text-xs text-gray-500">Science Olympiad Results</p>
+                                </div>
+                                <span class="text-xs text-gray-400">2h ago</span>
+                            </div>
+                            
+                            <div class="activity-log-item">
+                                <div class="activity-log-icon success">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-800">Gallery updated</p>
+                                    <p class="text-xs text-gray-500">5 new photos added</p>
+                                </div>
+                                <span class="text-xs text-gray-400">5h ago</span>
+                            </div>
+                            
+                            <div class="activity-log-item">
+                                <div class="activity-log-icon warning">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-800">Event scheduled</p>
+                                    <p class="text-xs text-gray-500">Sports Day 2024</p>
+                                </div>
+                                <span class="text-xs text-gray-400">1d ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/firebase.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAdminProfile();
+            loadDashboardStats();
+            loadRecentNews();
+            
+            // Sidebar toggle for mobile
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.querySelector('.admin-sidebar');
+            
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                });
+            }
+        });
+        
+        // Load recent news
+        async function loadRecentNews() {
+            const container = document.getElementById('recent-news-container');
+            
+            try {
+                const result = await FirebaseHelper.getCollection('news', 'createdAt', 'desc', 5);
+                
+                if (result.success && result.data.length > 0) {
+                    container.innerHTML = result.data.map(news => `
+                        <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                            <img src="${news.imageUrl || 'https://via.placeholder.com/80'}" 
+                                 alt="${news.title}" 
+                                 class="w-20 h-20 object-cover rounded-lg"
+                                 onerror="this.src='https://via.placeholder.com/80'">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-semibold text-gray-800 truncate">${news.title}</h4>
+                                <p class="text-sm text-gray-500 line-clamp-2">${news.excerpt || ''}</p>
+                                <div class="flex items-center space-x-2 mt-2">
+                                    <span class="badge-${news.status === 'published' ? 'success' : 'warning'}">
+                                        ${news.status || 'draft'}
+                                    </span>
+                                    <span class="text-xs text-gray-400">${formatDate(news.createdAt)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <i class="fas fa-newspaper text-4xl mb-2 opacity-50"></i>
+                            <p>No news articles yet</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading recent news:', error);
+                container.innerHTML = '<p class="text-red-500 text-center">Error loading news</p>';
+            }
+        }
+        
+        // Format date helper
+        function formatDate(timestamp) {
+            if (!timestamp) return 'N/A';
+            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+    </script>
+</body>
+</html>

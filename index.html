@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBM - Gomendra Birta Model English School</title>
+    <meta name="description" content="Gomendra Birta Model English School - Excellence in Education">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#f59e0b',
+                        accent: '#06b6d4',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-gradient-to-br from-primary via-blue-600 to-accent z-[9999] flex items-center justify-center">
+        <div class="text-center">
+            <div class="loader mb-4"></div>
+            <h2 class="text-white text-2xl font-bold animate-pulse">GBM</h2>
+            <p class="text-white/80 text-sm">Loading Excellence...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-500 glass-nav">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white font-bold text-xl">GBM</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <h1 class="text-white font-bold text-lg leading-tight">Gomendra Birta</h1>
+                        <p class="text-white/80 text-xs">Model English School</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="academics.html" class="nav-link">Academics</a>
+                    <a href="admissions.html" class="nav-link">Admissions</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="news.html" class="nav-link">News</a>
+                    <a href="events.html" class="nav-link">Events</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:block">
+                    <a href="admissions.html" class="btn-primary">
+                        <i class="fas fa-graduation-cap mr-2"></i>Apply Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="index.html" class="mobile-nav-link active">Home</a>
+                    <a href="about.html" class="mobile-nav-link">About</a>
+                    <a href="academics.html" class="mobile-nav-link">Academics</a>
+                    <a href="admissions.html" class="mobile-nav-link">Admissions</a>
+                    <a href="gallery.html" class="mobile-nav-link">Gallery</a>
+                    <a href="news.html" class="mobile-nav-link">News</a>
+                    <a href="events.html" class="mobile-nav-link">Events</a>
+                    <a href="contact.html" class="mobile-nav-link">Contact</a>
+                    <a href="faq.html" class="mobile-nav-link">FAQ</a>
+                    <a href="admissions.html" class="btn-primary text-center mt-2">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Three.js Background -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div id="three-canvas" class="absolute inset-0 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/90 via-blue-800/80 to-dark/90 z-10"></div>
+        
+        <div class="container mx-auto px-4 relative z-20 pt-20">
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="hero-badge" data-aos="fade-down">
+                    <i class="fas fa-star text-secondary"></i>
+                    <span>Excellence in Education Since 1999</span>
+                </div>
+                
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+                    <span class="gradient-text">Empowering Minds,</span><br>
+                    Shaping Futures
+                </h1>
+                
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+                    Welcome to Gomendra Birta Model English School - Where tradition meets innovation in creating tomorrow's leaders through quality education, moral values, and holistic development.
+                </p>
+                
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+                    <a href="admissions.html" class="btn-hero-primary">
+                        <i class="fas fa-user-plus mr-2"></i>Admission Open
+                    </a>
+                    <a href="about.html" class="btn-hero-secondary">
+                        <i class="fas fa-info-circle mr-2"></i>Learn More
+                    </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16" data-aos="fade-up" data-aos-delay="800">
+                    <div class="stat-card glass-card p-6 rounded-2xl">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" data-target="1500">0</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                    <div class="stat-card glass-card p-6 rounded-2xl">
+                        <div class="stat-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-number" data-target="85">0</div>
+                        <div class="stat-label">Expert Teachers</div>
+                    </div>
+                    <div class="stat-card glass-card p-6 rounded-2xl">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-number" data-target="25">0</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-card glass-card p-6 rounded-2xl">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">% Pass Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <a href="#welcome" class="text-white/60 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="py-20 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="image-grid grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400" alt="School Building" class="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 lazy-image" data-src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400" alt="Students" class="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 lazy-image" data-src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400">
+                        </div>
+                        <div class="space-y-4 pt-8">
+                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400" alt="Library" class="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 lazy-image" data-src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400">
+                            <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=400" alt="Classroom" class="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 lazy-image" data-src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=400">
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="badge-primary mb-4">Welcome to GBM</div>
+                    <h2 class="section-title mb-6">Nurturing Excellence for Over Two Decades</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Gomendra Birta Model English School has been a beacon of educational excellence since its establishment. We believe in fostering an environment where every student can thrive academically, socially, and emotionally.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Our commitment to quality education, combined with modern teaching methodologies and traditional values, prepares students to face the challenges of the 21st century with confidence and integrity.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">Modern Curriculum</h3>
+                            <p class="text-sm text-gray-600">Updated syllabus with practical learning</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">Digital Learning</h3>
+                            <p class="text-sm text-gray-600">Smart classrooms and tech integration</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">Science Labs</h3>
+                            <p class="text-sm text-gray-600">Well-equipped laboratories</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">Sports Facilities</h3>
+                            <p class="text-sm text-gray-600">Comprehensive athletic programs</p>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="btn-primary inline-flex">
+                        Discover More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-gradient-to-br from-dark to-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="badge-light mb-4">Academic Programs</div>
+                <h2 class="section-title text-white mb-4">Educational Pathways</h2>
+                <p class="text-white/70 max-w-2xl mx-auto">We offer comprehensive educational programs designed to nurture students from early childhood through higher secondary education.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="program-card glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="program-icon mb-6">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Pre-Primary</h3>
+                    <p class="text-white/70 mb-6">Play-based learning environment that fosters curiosity, creativity, and social skills in young learners aged 3-5 years.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Montessori Method</li>
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Activity-Based Learning</li>
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Safe Environment</li>
+                    </ul>
+                    <a href="academics.html" class="text-secondary hover:text-white transition-colors font-semibold">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <div class="program-card glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-icon mb-6">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Primary (1-5)</h3>
+                    <p class="text-white/70 mb-6">Foundation building with focus on literacy, numeracy, and holistic development through interactive teaching methods.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Core Subjects</li>
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Extracurricular Activities</li>
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Moral Education</li>
+                    </ul>
+                    <a href="academics.html" class="text-secondary hover:text-white transition-colors font-semibold">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <div class="program-card glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-icon mb-6">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Secondary (6-10)</h3>
+                    <p class="text-white/70 mb-6">Comprehensive curriculum preparing students for SEE with emphasis on critical thinking and practical applications.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Science & Technology</li>
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Laboratory Work</li>
+                        <li class="flex items-center"><i class="fas fa-check text-secondary mr-2"></i>Career Guidance</li>
+                    </ul>
+                    <a href="academics.html" class="text-secondary hover:text-white transition-colors font-semibold">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Board Section -->
+    <section id="notices" class="py-20 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2" data-aos="fade-right">
+                    <div class="badge-primary mb-4">Stay Updated</div>
+                    <h2 class="section-title mb-8">Latest Notices & Announcements</h2>
+                    
+                    <div id="notices-container" class="space-y-4">
+                        <!-- Dynamic notices will be loaded here -->
+                        <div class="notice-card glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start space-x-4">
+                                    <div class="notice-date bg-primary text-white p-3 rounded-lg text-center min-w-[70px]">
+                                        <div class="text-2xl font-bold">15</div>
+                                        <div class="text-sm">JAN</div>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2">Admission Open for Academic Session 2024</h3>
+                                        <p class="text-gray-600 mb-3">Applications are invited for admission from Play Group to Grade 10. Limited seats available.</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <span><i class="fas fa-tag text-secondary mr-1"></i>Admission</span>
+                                            <span><i class="fas fa-download text-secondary mr-1"></i>Download Form</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pin-indicator text-red-500"><i class="fas fa-thumbtack"></i></div>
+                            </div>
+                        </div>
+                        
+                        <div class="notice-card glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start space-x-4">
+                                    <div class="notice-date bg-primary text-white p-3 rounded-lg text-center min-w-[70px]">
+                                        <div class="text-2xl font-bold">12</div>
+                                        <div class="text-sm">JAN</div>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2">Winter Vacation Schedule</h3>
+                                        <p class="text-gray-600 mb-3">School will remain closed from December 25 to January 5 for winter break.</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <span><i class="fas fa-tag text-secondary mr-1"></i>Holiday</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="notice-card glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start space-x-4">
+                                    <div class="notice-date bg-primary text-white p-3 rounded-lg text-center min-w-[70px]">
+                                        <div class="text-2xl font-bold">08</div>
+                                        <div class="text-sm">JAN</div>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2">Parent-Teacher Meeting</h3>
+                                        <p class="text-gray-600 mb-3">PTM scheduled for Grade 6-10 on January 20, 2024 from 10 AM to 2 PM.</p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <span><i class="fas fa-tag text-secondary mr-1"></i>Event</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="news.html" class="btn-outline inline-flex">View All Notices <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="glass-card p-8 rounded-2xl h-full">
+                        <h3 class="text-2xl font-bold mb-6">Quick Links</h3>
+                        <div class="space-y-4">
+                            <a href="admissions.html" class="quick-link flex items-center p-4 rounded-xl hover:bg-primary/10 transition-colors">
+                                <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-file-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Admission Procedure</h4>
+                                    <p class="text-sm text-gray-600">Step by step guide</p>
+                                </div>
+                            </a>
+                            <a href="academics.html" class="quick-link flex items-center p-4 rounded-xl hover:bg-primary/20 transition-colors">
+                                <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-calendar-alt text-secondary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Academic Calendar</h4>
+                                    <p class="text-sm text-gray-600">Important dates</p>
+                                </div>
+                            </a>
+                            <a href="downloads.html" class="quick-link flex items-center p-4 rounded-xl hover:bg-accent/10 transition-colors">
+                                <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-download text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Downloads</h4>
+                                    <p class="text-sm text-gray-600">Forms & Resources</p>
+                                </div>
+                            </a>
+                            <a href="contact.html" class="quick-link flex items-center p-4 rounded-xl hover:bg-primary/10 transition-colors">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-green-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Contact Us</h4>
+                                    <p class="text-sm text-gray-600">Get in touch</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview Section -->
+    <section id="gallery-preview" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="badge-primary mb-4">Campus Life</div>
+                <h2 class="section-title mb-4">Photo Gallery</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore moments from our vibrant school community - from classroom activities to sports events and cultural programs.</p>
+            </div>
+            
+            <div class="gallery-grid grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item md:col-span-2 md:row-span-2" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=800" alt="Gallery" class="w-full h-full object-cover rounded-2xl lazy-image" data-src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=800">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400" alt="Gallery" class="w-full h-full object-cover rounded-2xl lazy-image" data-src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400" alt="Gallery" class="w-full h-full object-cover rounded-2xl lazy-image" data-src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=400" alt="Gallery" class="w-full h-full object-cover rounded-2xl lazy-image" data-src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=400">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400" alt="Gallery" class="w-full h-full object-cover rounded-2xl lazy-image" data-src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="gallery.html" class="btn-primary inline-flex">View Full Gallery <i class="fas fa-images ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gradient-to-br from-primary to-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="badge-light mb-4">Testimonials</div>
+                <h2 class="section-title text-white mb-4">What Parents Say</h2>
+                <p class="text-white/70 max-w-2xl mx-auto">Hear from our satisfied parents about their experience with GBM.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="rating mb-4">
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                    </div>
+                    <p class="text-white/80 mb-6 italic">"GBM has transformed my child's approach to learning. The teachers are dedicated and the facilities are excellent. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Ramesh+Kumar&background=f59e0b&color=fff" alt="Parent" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ramesh Kumar</h4>
+                            <p class="text-sm text-white/60">Parent of Grade 8 Student</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="rating mb-4">
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                    </div>
+                    <p class="text-white/80 mb-6 italic">"The holistic development approach at GBM is commendable. My children have grown not just academically but also in character and confidence."</p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Sita+Sharma&background=06b6d4&color=fff" alt="Parent" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sita Sharma</h4>
+                            <p class="text-sm text-white/60">Parent of Grade 5 Student</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="rating mb-4">
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                        <i class="fas fa-star text-secondary"></i>
+                    </div>
+                    <p class="text-white/80 mb-6 italic">"Excellent infrastructure, qualified teachers, and a safe learning environment. GBM provides the perfect foundation for future success."</p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Hari+Thapa&background=1e40af&color=fff" alt="Parent" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Hari Thapa</h4>
+                            <p class="text-sm text-white/60">Parent of Grade 10 Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news-preview" class="py-20 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="badge-primary mb-4">Latest Updates</div>
+                <h2 class="section-title mb-4">News & Events</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Stay informed about the latest happenings, achievements, and upcoming events at GBM.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="news-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-image h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=600" alt="News" class="w-full h-full object-cover lazy-image" data-src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=600">
+                    </div>
+                    <div class="p-6">
+                        <div class="news-meta mb-3">
+                            <span class="badge-secondary text-xs">Achievement</span>
+                            <span class="text-gray-500 text-xs ml-2"><i class="far fa-calendar mr-1"></i>Jan 10, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors cursor-pointer">Students Excel in National Science Olympiad</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">Our students brought home three gold medals and two silver medals from the National Science Olympiad held in Kathmandu.</p>
+                        <a href="news.html" class="text-primary font-semibold hover:text-secondary transition-colors">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </article>
+                
+                <article class="news-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-image h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=600" alt="News" class="w-full h-full object-cover lazy-image" data-src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=600">
+                    </div>
+                    <div class="p-6">
+                        <div class="news-meta mb-3">
+                            <span class="badge-primary text-xs">Event</span>
+                            <span class="text-gray-500 text-xs ml-2"><i class="far fa-calendar mr-1"></i>Jan 05, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors cursor-pointer">Annual Sports Day Celebration</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">The annual sports day witnessed enthusiastic participation from students across all grades with various athletic competitions.</p>
+                        <a href="news.html" class="text-primary font-semibold hover:text-secondary transition-colors">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </article>
+                
+                <article class="news-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-image h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600" alt="News" class="w-full h-full object-cover lazy-image" data-src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600">
+                    </div>
+                    <div class="p-6">
+                        <div class="news-meta mb-3">
+                            <span class="badge-accent text-xs">Cultural</span>
+                            <span class="text-gray-500 text-xs ml-2"><i class="far fa-calendar mr-1"></i>Dec 28, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors cursor-pointer">Cultural Program Celebrates Diversity</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">Students showcased diverse cultural performances celebrating Nepal's rich heritage and traditions.</p>
+                        <a href="news.html" class="text-primary font-semibold hover:text-secondary transition-colors">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="news.html" class="btn-outline inline-flex">View All News <i class="fas fa-newspaper ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section id="contact-cta" class="py-20 bg-gradient-to-r from-secondary to-orange-500 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Join Our Family?</h2>
+                    <p class="text-white/90 text-lg mb-8">Admissions are now open for the upcoming academic session. Schedule a campus tour or contact us for more information.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="admissions.html" class="bg-white text-secondary px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg">
+                            <i class="fas fa-user-plus mr-2"></i>Apply Now
+                        </a>
+                        <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors">
+                            <i class="fas fa-phone mr-2"></i>Contact Us
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6" data-aos="fade-left">
+                    <div class="bg-white/20 backdrop-blur-sm p-6 rounded-2xl">
+                        <i class="fas fa-map-marker-alt text-3xl mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Visit Us</h4>
+                        <p class="text-white/80">Birtamode-4, Jhapa<br>Nepal</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm p-6 rounded-2xl">
+                        <i class="fas fa-phone text-3xl mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Call Us</h4>
+                        <p class="text-white/80">+977-23-550XXX<br>+977-98XXXXXXXX</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm p-6 rounded-2xl">
+                        <i class="fas fa-envelope text-3xl mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Email Us</h4>
+                        <p class="text-white/80">info@gbm.edu.np<br>admission@gbm.edu.np</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm p-6 rounded-2xl">
+                        <i class="fas fa-clock text-3xl mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Office Hours</h4>
+                        <p class="text-white/80">Sun-Fri: 10AM-5PM<br>Saturday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">GBM</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Gomendra Birta</h3>
+                            <p class="text-sm text-white/60">Model English School</p>
+                        </div>
+                    </div>
+                    <p class="text-white/70 mb-6">Empowering students with quality education, moral values, and life skills since 1999.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-white/70 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="academics.html" class="text-white/70 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="admissions.html" class="text-white/70 hover:text-white transition-colors">Admissions</a></li>
+                        <li><a href="gallery.html" class="text-white/70 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="news.html" class="text-white/70 hover:text-white transition-colors">News</a></li>
+                        <li><a href="contact.html" class="text-white/70 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="academics.html" class="text-white/70 hover:text-white transition-colors">Pre-Primary</a></li>
+                        <li><a href="academics.html" class="text-white/70 hover:text-white transition-colors">Primary (1-5)</a></li>
+                        <li><a href="academics.html" class="text-white/70 hover:text-white transition-colors">Lower Secondary</a></li>
+                        <li><a href="academics.html" class="text-white/70 hover:text-white transition-colors">Secondary (9-10)</a></li>
+                        <li><a href="academics.html" class="text-white/70 hover:text-white transition-colors">Plus Two</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Newsletter</h4>
+                    <p class="text-white/70 mb-4">Subscribe to get latest updates and news.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-primary text-white placeholder-white/50">
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 px-4 py-3 rounded-lg font-semibold transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i>Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-white/60 text-sm mb-4 md:mb-0">&copy; 2024 GBM. All rights reserved.</p>
+                    <div class="flex space-x-6 text-sm text-white/60">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/firebase.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>
