@@ -1,0 +1,268 @@
+/* ============================================
+   GBM School Website - Responsive Styles
+   Mobile-First Approach
+   ============================================ */
+
+/* Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+/* Desktop (1200px - 1399px) */
+@media (max-width: 1399px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.25rem;
+    }
+}
+
+/* Laptop (992px - 1199px) */
+@media (max-width: 1199px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (max-width: 991px) {
+    .hero-title {
+        font-size: 2.25rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+    }
+    
+    .gallery-grid {
+        grid-template-rows: repeat(2, 180px);
+    }
+    
+    #hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+    }
+}
+
+/* Tablet Portrait (576px - 767px) */
+@media (max-width: 767px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-icon {
+        font-size: 2rem;
+    }
+    
+    .gallery-grid {
+        grid-template-rows: repeat(2, 150px);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+        justify-content: center;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Mobile (320px - 575px) */
+@media (max-width: 575px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-icon {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-grid {
+        grid-template-rows: repeat(2, 120px);
+    }
+    
+    .gallery-item.md\:col-span-2 {
+        grid-column: span 1;
+    }
+    
+    .gallery-item.md\:row-span-2 {
+        grid-row: span 1;
+    }
+    
+    /* Navigation adjustments */
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Footer adjustments */
+    footer .grid > div {
+        text-align: center;
+    }
+    
+    footer .flex.space-x-4 {
+        justify-content: center;
+    }
+}
+
+/* Small Mobile (320px - 374px) */
+@media (max-width: 374px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 1.25rem;
+    }
+    
+    .grid.grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Print Styles */
+@media print {
+    nav,
+    #back-to-top,
+    .hero-buttons,
+    footer {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .glass-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --light: #1e293b;
+    }
+    
+    body {
+        background-color: var(--dark);
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .glass-card {
+        border: 2px solid currentColor;
+    }
+    
+    .btn-primary {
+        border: 2px solid white;
+    }
+}
+
+/* Hover Capability */
+@media (hover: hover) {
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    button:hover,
+    a:hover {
+        cursor: pointer;
+    }
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .gallery-overlay {
+        opacity: 1;
+    }
+    
+    .stat-card:hover {
+        transform: none;
+    }
+    
+    .news-card:hover .news-image img {
+        transform: none;
+    }
+}
